@@ -16,28 +16,19 @@ public class Commandline1 {
                     "md5sum variant_summary.txt.gz", "cat variant_summary.txt.gz.md5", "gunzip variant_summary.txt.gz");
 
             try {
-                for (int command = 0; command < list_of_commands.size(); command++) {
+                for (String command:list_of_commands){
                     Process process = Runtime.getRuntime().exec(String.valueOf(command));
                     BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream())); // why do you do this??
-                    // Class BufferedReader.
-                    // Reads text from a character-input stream, buffering characters so as to provide for the efficient reading of characters,
-                    // arrays, and lines. The buffer size may be specified, or the default size may be used.
-                    // The default is large enough for most purposes.
-                    // The BufferedReader is used to provide the buffering to the Reader's object while reading the data from input stream.
                     String line = "";
-                    if (process.toString().equals("md5sum variant_summary.txt.gz")) {
-                        while ((line = reader.readLine()) != null) {
+                    while((line = reader.readLine()) != null){
+                        if (process.toString().equals("md5sum variant_summary.txt.gz")){
                             String[] splitting_spaces = line.split(" ");
                             md5_value1.add(splitting_spaces[0]);
-                        }
-                        process.destroy();
-                    }
-                    if (process.toString().equals("cat variant_summary.txt.gz.md5")) {
-                        while ((line = reader.readLine()) != null) {
+                        }if (process.toString().equals("cat variant_summary.txt.gz.md5")){
                             String[] splitting_spaces = line.split(" ");
                             md5_value2.add(splitting_spaces[0]);
                         }
-
+                        //process.destroy();
                     }
                 }
                 if (md5_value1.equals(md5_value2)) {
@@ -46,9 +37,31 @@ public class Commandline1 {
                     System.out.println("They are not equal");
                 }
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+
+                    // Class BufferedReader.
+                    // Reads text from a character-input stream, buffering characters so as to provide for the efficient reading of characters,
+                    // arrays, and lines. The buffer size may be specified, or the default size may be used.
+                    // The default is large enough for most purposes.
+                    // The BufferedReader is used to provide the buffering to the Reader's object while reading the data from input stream.
+
+//                    if (process.toString().equals("md5sum variant_summary.txt.gz")) {
+//                        while ((line = reader.readLine()) != null) {
+//                            String[] splitting_spaces = line.split(" ");
+//                            md5_value1.add(splitting_spaces[0]);
+//                        }
+//                        process.destroy();
+//                    }
+//                    if (process.toString().equals("cat variant_summary.txt.gz.md5")) {
+//                        while ((line = reader.readLine()) != null) {
+//                            String[] splitting_spaces = line.split(" ");
+//                            md5_value2.add(splitting_spaces[0]);
+//                        }
+
+
         }
     }
 

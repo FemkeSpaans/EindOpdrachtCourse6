@@ -21,11 +21,11 @@ public class Variant {
 }
 
 // allele_id[0]
-// position
-// pathogenicity[6]
+// position[19]
+// pathogenicity[7]
 // gene_id[3]
 // type[1]
 // alternate_allele[33]
-// disease
+// disease????
 // reference_allele[32]
 // chromosome[18]
