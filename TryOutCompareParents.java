@@ -25,13 +25,12 @@ public class TryOutCompareParents {
         heroes_marvel_third_movie.put("Iron Man", "2013");
         heroes_marvel_third_movie.put("Thor", "2017");
 
-        for (int movie = 0; movie < heroes_marvel_first_movie.size(); movie++) {
-            System.out.println(movie);
-
-        }
+//        for (int movie = 0; movie < heroes_marvel_first_movie.size(); movie++) {
+//            System.out.println(movie);
+//
+//        }
 
         // for each movie in heroes first movie check if the movie is in heroes second movie
-
 
     }
 }
