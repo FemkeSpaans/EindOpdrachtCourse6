@@ -18,8 +18,6 @@ public class Variant1 {
     ArrayList<String> reference_allele_list = new ArrayList<>();
     ArrayList<String> chromosome_list = new ArrayList<>();
 
-
-
     public void main(String[] args) throws IOException {
         String filename = "variant_summary.txt";
         BufferedReader buffered_reader1 = new BufferedReader(new FileReader(filename));

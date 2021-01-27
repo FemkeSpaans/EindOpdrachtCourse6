@@ -18,40 +18,34 @@ public class Commandline1 {
      * Executes 5 commands (processes), if the command is one of two it will split on the space
      * and add them to the linked lists.
      */
-    public Commandline1() throws NotAValidMD5 {
+    public Commandline1() throws NotAValidMD5 , IOException{
 
-        LinkedList<String> md5_value1 = new LinkedList<>();
-        LinkedList<String> md5_value2 = new LinkedList<>();
+        String md5_value1 = "";
+        String md5_value2 = "";
         List<String> list_of_commands = Arrays.asList("curl -O ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz",
                 "curl -O ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz.md5",
                 "md5sum variant_summary.txt.gz", "cat variant_summary.txt.gz.md5", "gunzip variant_summary.txt.gz");
 
-        try {
-            for (String command : list_of_commands) {
-                Process process = Runtime.getRuntime().exec(String.valueOf(command));
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line = "";
-                while ((line = reader.readLine()) != null) {
-                    if (process.toString().equals("md5sum variant_summary.txt.gz")) {
-                        String[] splitting_spaces = line.split(" ");
-                        md5_value1.add(splitting_spaces[0]);
-                        System.out.println(md5_value1);
-                    }
-                    if (process.toString().equals("cat variant_summary.txt.gz.md5")) {
-                        String[] splitting_spaces = line.split(" ");
-                        md5_value2.add(splitting_spaces[0]);
-                        System.out.println(md5_value2);
-                    }
+        for (String command : list_of_commands) {
+            Process process = Runtime.getRuntime().exec((command));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                if (command.equals("md5sum variant_summary.txt.gz")) {
+                    String[] splitting_spaces = line.split(" ");
+                    md5_value1 = splitting_spaces[0];
+                }
+                if (command.equals("cat variant_summary.txt.gz.md5")) {
+                    String[] splitting_spaces = line.split(" ");
+                    md5_value2 = splitting_spaces[0];
                 }
             }
-            if (md5_value1.equals(md5_value2)) {
-                System.out.println("They are equal");
-            }else {
-                throw new NotAValidMD5();
-            }
+        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (md5_value1.equals(md5_value2)) {
+            System.out.println("They are equal");
+        } else {
+            throw new NotAValidMD5();
         }
     }
 }

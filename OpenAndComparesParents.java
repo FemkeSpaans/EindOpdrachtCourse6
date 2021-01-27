@@ -67,6 +67,9 @@ public class OpenAndComparesParents {
                 }
             }
         }
+        // you need to compare these
+        // how are you going to do this?
+        // you want to compare the keys of 1 and 2 and safe the ones that are the same in a different data structure, but which one?
 
 
 
