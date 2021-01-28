@@ -3,7 +3,7 @@ import java.util.*;
 
 class OpenAndComparesParents {
 
-    public OpenAndComparesParents() throws IOException {
+    public OpenAndComparesParents(HashMap<Integer, Variant2> variant_hashmap) throws IOException {
 
         HashMap<String, ArrayList<String>> parent1 = new HashMap<>();
         HashMap<String, ArrayList<String>> parent2 = new HashMap<>();
@@ -64,12 +64,65 @@ class OpenAndComparesParents {
                 }
             }
         }
-        // you need to compare these
-        // how are you going to do this?
-        // you want to compare the keys of 1 and 2 and safe the ones that are the same in a different data structure, but which one?
+
+        ArrayList<HashMap<String, ArrayList<String>>> list_of_parents = new ArrayList<>();
+        list_of_parents.add(parent1);
+        list_of_parents.add(parent2);
+        list_of_parents.add(parent3);
+        list_of_parents.add(parent4);
+        list_of_parents.add(parent5);
+        list_of_parents.add(parent6);
+
+        ArrayList<ArrayList<String>> kid = new ArrayList<>();
 
 
+        for (int i = 0; i < 5; i++){
+            for (int j = i + 1; j < 5; j++) {
+                ArrayList<String> overlappingKeys = CompareKeys(list_of_parents.get(i), list_of_parents.get(j));
+                for(String key: overlappingKeys){
+                    try{
+                        int rs_key  = Integer.parseInt(key.substring(2));
+                        Variant2 variant = variant_hashmap.get(rs_key);
+                        String alternate_allele = variant.getAlternate_allele();
+                        if(list_of_parents.get(i).get(key).get(2).contains(alternate_allele) &&
+                                list_of_parents.get(j).get(key).get(2).contains(alternate_allele)){
+                            kid.add(new ArrayList<>(Arrays.asList(key, alternate_allele + alternate_allele, variant.getChromosome(),
+                                    list_of_parents.get(i).get(key).get(2), list_of_parents.get(j).get(key).get(2),
+                                    list_of_files.get(i), list_of_files.get(j))));
 
+                        }
+                    } catch (NullPointerException ignored) {
+                    }
+
+                }
+            }
+        }
+        WriteFile(kid);
+    }
+
+    public void WriteFile(ArrayList<ArrayList<String>> kid) throws IOException {
+        FileWriter myWriter = new FileWriter("Output.txt");
+        myWriter.write("Rsid\tGenotype child\tChromosome\tAllele parent 1\tAllele parent 2\tFile parent 1\tFile parent 2\n");
+        for(ArrayList<String> disease:kid){
+            myWriter.append(String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\n",disease.get(0), disease.get(1), disease.get(2),
+                    disease.get(3), disease.get(4), disease.get(5), disease.get(6)));
+        }
+        myWriter.close();
+    }
+
+    private ArrayList<String> CompareKeys(HashMap<String,ArrayList<String>> hashMap, HashMap<String, ArrayList<String>> hashMap1) {
+        //ArrayList<HashMap> compareKeys = new ArrayList<>(Arrays.asList(hashMap, hashMap1));
+        //ArrayList<String> compareKeys = new ArrayList<>();
+        ArrayList<String> found_keys = new ArrayList<>();
+        for(String key:hashMap.keySet()){
+            if(hashMap1.containsKey(key)){
+                found_keys.add(key);
+            }
+        }
+        return found_keys;
+    }
 
     }
-}
+
+    // alternate allele is found in both parents than the kid is possibly sick (hopefully, I hope the fucker dies)
+

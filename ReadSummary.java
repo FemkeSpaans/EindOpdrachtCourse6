@@ -5,16 +5,16 @@ import java.util.HashMap;
 
 public class ReadSummary {
 
-    String filename = "variant_summary.txt";
+    static String filename = "variant_summary.txt";
 
-    /**
-     * The constructor of ReadSummary
-     * To read the file variant_summary.txt the constructor calls to the method read_file
-     * @throws IOException
-     */
-    public ReadSummary() throws IOException {
-        read_file();
-    }
+//    /**
+//     * The constructor of ReadSummary
+//     * To read the file variant_summary.txt the constructor calls to the method read_file
+//     * @throws IOException
+//     */
+//    public ReadSummary() throws IOException {
+//        read_file();
+//    }
 
     /**
      * The method read_file starts by making a HashMap to save the information in from the file variant_summarry.txt
@@ -25,7 +25,7 @@ public class ReadSummary {
      * If it does not contain the key already, it adds the new variable to a HashMap.
      * @throws IOException
      */
-    public void read_file() throws IOException {
+    public static HashMap<Integer, Variant2> read_file() throws IOException {
         HashMap<Integer, Variant2> variant_hashmap = new HashMap<>();
         BufferedReader buffered_reader1 = new BufferedReader(new FileReader(filename));
         String line = "";
@@ -38,6 +38,7 @@ public class ReadSummary {
                 variant_hashmap.put(variant_object.getRs(), variant_object);
             }
         }
+        return variant_hashmap;
     }
 }
 

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Main {
 
@@ -10,8 +11,8 @@ public class Main {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        new OpenAndComparesParents();
-        //new Variant2();
-        //new ReadSummary();
+
+        new OpenAndComparesParents(ReadSummary.read_file());
     }
 }
+

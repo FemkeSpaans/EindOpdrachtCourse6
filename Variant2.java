@@ -8,22 +8,20 @@ public class Variant2 {
     /**
      * Constructor for Variant2
      * Is used for ???
-     * @param allele_id
-     * @param position
-     * @param pathogenicity
-     * @param gene_id
-     * @param rs
-     * @param type
-     * @param alternate_allele
-     * @param disease
-     * @param reference_allele
-     * @param chromosome
+     * @param allele_id the id of the allele in variant_summary.txt
+     * @param position the position of the allele in variant_summary.txt
+     * @param pathogenicity the pathogenicity in variant_summary.txt
+     * @param gene_id the id of the gene in variant_summary.txt
+     * @param rs the rs id in variant_summary.txt
+     * @param type the type in variant_summary.txt
+     * @param alternate_allele the alternate allele in variant_summary.txt
+     * @param disease the disease code in variant_summary.txt
+     * @param reference_allele the reference allele in variant_summary.txt
+     * @param chromosome the chromosome in variant_summary.txt
      * @throws IOException
      */
     public Variant2(int allele_id, int position, int pathogenicity, int gene_id, int rs, String type, String alternate_allele,
                         String disease, String reference_allele, String chromosome) throws IOException {
-
-        // making the values from the constructor into getters and setters
 
         setAllele_id(allele_id);
         setPosition(position);
@@ -55,7 +53,7 @@ public class Variant2 {
 
     /**
      * The setter for rs
-     * @param rs
+     * @param rs the rs id in variant_summary.txt
      */
     public void setRs(int rs) {
         this.rs = rs;
@@ -63,7 +61,7 @@ public class Variant2 {
 
     /**
      * The setter for allele_id
-     * @param allele_id
+     * @param allele_id the id of the allele in variant_summary.txt
      */
     public void setAllele_id(int allele_id) {
         this.allele_id = allele_id;
@@ -79,7 +77,7 @@ public class Variant2 {
 
     /**
      * The setter for pathogenicity
-     * @param pathogenicity
+     * @param pathogenicity the pathogenicity in variant_summary.txt
      */
     public void setPathogenicity(int pathogenicity) {
         this.pathogenicity = pathogenicity;
@@ -95,7 +93,7 @@ public class Variant2 {
 
     /**
      * The setter for position
-     * @param position
+     * @param position the position of the allele in variant_summary.txt
      */
     public void setPosition(int position) {
         this.position = position;
@@ -111,7 +109,8 @@ public class Variant2 {
 
     /**
      * The setter for gene_id
-     * @param gene_id
+     * @param gene_id the id of the gene in variant_summary.txt
+     *
      */
     public void setGene_id(int gene_id) {
         this.gene_id = gene_id;
@@ -127,7 +126,7 @@ public class Variant2 {
 
     /**
      * The setter for type
-     * @param type
+     * @param type the type in variant_summary.txt
      */
     public void setType(String type) {
         this.type = type;
@@ -143,7 +142,7 @@ public class Variant2 {
 
     /**
      * The setter for alternate_allele
-     * @param alternate_allele
+     * @param alternate_allele the alternate allele in variant_summary.txt
      */
     public void setAlternate_allele(String alternate_allele) {
         this.alternate_allele = alternate_allele;
@@ -159,7 +158,7 @@ public class Variant2 {
 
     /**
      * The setter for disease
-     * @param disease
+     * @param disease the disease code in variant_summary.txt
      */
     public void setDisease(String disease) {
         this.disease = disease;
@@ -175,7 +174,7 @@ public class Variant2 {
 
     /**
      * The setter for reference_allele
-     * @param reference_allele
+     * @param reference_allele the reference allele in variant_summary.txt
      */
     public void setReference_allele(String reference_allele) {
         this.reference_allele = reference_allele;
@@ -191,9 +190,10 @@ public class Variant2 {
 
     /**
      * The setter for chromosome
-     * @param chromosome
+     * @param chromosome the chromosome in variant_summary.txt
      */
     public void setChromosome(String chromosome) {
         this.chromosome = chromosome;
     }
 }
+
