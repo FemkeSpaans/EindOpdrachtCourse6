@@ -1,8 +1,27 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * @author Femke Spaans
+ * OpenAndCompareParents
+ * Code to compare several parental files
+ */
 class OpenAndComparesParents {
 
+    /**
+     * Constructor for OpenAndComparesParents
+     * Creates several hashmaps to save the information from the parents in.
+     * next it creates an arraylist which will hold temporary values.
+     * next it creates a list which contains 6 filenames.
+     * It loops over the different filenames and opens them, splits them on the tabs and adds a hashmap.
+     * next it creates an arraylist to add all the hashmaps into of the parents.
+     * it also creates an arraylist for the child
+     * next it loops over the parents, so every parent can be matched with every parent.
+     * it then adds the overlapping keys from the hashmaps to an arraylist.
+     * next it loops over the keys and compares them to the keys in the file variant_summary.txt
+     * @param variant_hashmap
+     * @throws IOException
+     */
     public OpenAndComparesParents(HashMap<Integer, Variant2> variant_hashmap) throws IOException {
 
         HashMap<String, ArrayList<String>> parent1 = new HashMap<>();
@@ -83,13 +102,12 @@ class OpenAndComparesParents {
                     try{
                         int rs_key  = Integer.parseInt(key.substring(2));
                         Variant2 variant = variant_hashmap.get(rs_key);
-                        String alternate_allele = variant.getAlternate_allele();
+                        String alternate_allele = variant.getAlternate_allele(); // dit gaat mis, dit blijft null
                         if(list_of_parents.get(i).get(key).get(2).contains(alternate_allele) &&
-                                list_of_parents.get(j).get(key).get(2).contains(alternate_allele)){
+                                list_of_parents.get(j).get(key).get(2).contains(alternate_allele) && variant.getPathogenicity()==1){
                             kid.add(new ArrayList<>(Arrays.asList(key, alternate_allele + alternate_allele, variant.getChromosome(),
                                     list_of_parents.get(i).get(key).get(2), list_of_parents.get(j).get(key).get(2),
                                     list_of_files.get(i), list_of_files.get(j))));
-
                         }
                     } catch (NullPointerException ignored) {
                     }

@@ -3,7 +3,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,9 +13,11 @@ import java.util.List;
 public class Commandline1 {
 
     /**
-     * Creates 2 linkedlists, one for each hashfunction
+     * Creates 2 strings, one for each hashfunction
      * Executes 5 commands (processes), if the command is one of two it will split on the space
-     * and add them to the linked lists.
+     * and add them to the strings.
+     * next it checks if the strings are the same, if they are the code continues
+     * if they are not the same a custom exception is thrown.
      */
     public Commandline1() throws NotAValidMD5 , IOException{
 
@@ -58,8 +59,3 @@ class NotAValidMD5 extends Exception{
         JOptionPane.showMessageDialog(null, "The md5check shows different hashfunctions");
     }
 }
-
-
-
-
-

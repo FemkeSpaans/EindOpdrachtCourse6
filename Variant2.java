@@ -1,5 +1,10 @@
 import java.io.IOException;
 
+/**
+ * @author Femke Spaans
+ * Variant2
+ * Code to create an objects Variant2
+ */
 public class Variant2 {
 
     private int allele_id, position, pathogenicity, gene_id, rs;
@@ -40,7 +45,7 @@ public class Variant2 {
      * @return
      */
     public int getAllele_id() {
-        return allele_id;
+        return this.allele_id;
     }
 
     /**
@@ -48,7 +53,7 @@ public class Variant2 {
      * @return
      */
     public int getRs() {
-        return rs;
+        return this.rs;
     }
 
     /**
@@ -72,7 +77,7 @@ public class Variant2 {
      * @return
      */
     public int getPathogenicity() {
-        return pathogenicity;
+        return this.pathogenicity;
     }
 
     /**
@@ -88,7 +93,7 @@ public class Variant2 {
      * @return
      */
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
     /**
@@ -104,7 +109,7 @@ public class Variant2 {
      * @return
      */
     public int getGene_id() {
-        return gene_id;
+        return this.gene_id;
     }
 
     /**
@@ -121,7 +126,7 @@ public class Variant2 {
      * @return
      */
     public String getType() {
-        return type;
+        return this.type;
     }
 
     /**
@@ -137,7 +142,7 @@ public class Variant2 {
      * @return alternate_allele
      */
     public String getAlternate_allele() {
-        return alternate_allele;
+        return this.alternate_allele;
     }
 
     /**
@@ -153,7 +158,7 @@ public class Variant2 {
      * @return disease
      */
     public String getDisease() {
-        return disease;
+        return this.disease;
     }
 
     /**
@@ -169,7 +174,7 @@ public class Variant2 {
      * @return reference_allele
      */
     public String getReference_allele() {
-        return reference_allele;
+        return this.reference_allele;
     }
 
     /**
@@ -185,7 +190,7 @@ public class Variant2 {
      * @return chromosome
      */
     public String getChromosome() {
-        return chromosome;
+        return this.chromosome;
     }
 
     /**
